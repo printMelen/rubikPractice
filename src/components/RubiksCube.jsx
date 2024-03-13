@@ -12,7 +12,7 @@ const RubiksCube = () => {
   useEffect(() => {
     // Scene
     scene.current = new THREE.Scene();
-    
+
     // Camera
     camera.current = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.current.position.z = 5;
@@ -26,7 +26,6 @@ const RubiksCube = () => {
     controls.current = new OrbitControls(camera.current, renderer.current.domElement);
 
     // Rubik's Cube
-    const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
     const cubeMaterials = [
       new THREE.MeshBasicMaterial({ color: 0xff0000 }), // Right
       new THREE.MeshBasicMaterial({ color: 0x00ff00 }), // Left
@@ -35,8 +34,25 @@ const RubiksCube = () => {
       new THREE.MeshBasicMaterial({ color: 0xff00ff }), // Front
       new THREE.MeshBasicMaterial({ color: 0x00ffff })  // Back
     ];
-    const cube = new THREE.Mesh(cubeGeometry, cubeMaterials);
-    scene.current.add(cube);
+
+    const cubeSize = 1;
+    const separation = 0.1;
+    const totalCubes = 3;
+
+    for (let x = 0; x < totalCubes; x++) {
+      for (let y = 0; y < totalCubes; y++) {
+        for (let z = 0; z < totalCubes; z++) {
+          const cubeGeometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
+          const cube = new THREE.Mesh(cubeGeometry, cubeMaterials);
+          cube.position.set(
+            (cubeSize + separation) * (x - (totalCubes - 1) / 2),
+            (cubeSize + separation) * (y - (totalCubes - 1) / 2),
+            (cubeSize + separation) * (z - (totalCubes - 1) / 2)
+          );
+          scene.current.add(cube);
+        }
+      }
+    }
 
     // Animation Loop
     const animate = () => {
