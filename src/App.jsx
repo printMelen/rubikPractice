@@ -1,10 +1,10 @@
-import ThreeScene from "./components/ThreeScene";
+import RubiksCube from "./components/RubiksCube.jsx";
 
 function App() {
 
   return (
     <>
-      <ThreeScene />
+      <RubiksCube />
     </>
   )
 }
