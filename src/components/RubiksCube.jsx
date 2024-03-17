@@ -28,15 +28,15 @@ const RubiksCube = () => {
     // Rubik's Cube
     const cubeMaterials = [
       new THREE.MeshBasicMaterial({ color: 0xff0000 }), // Right
-      new THREE.MeshBasicMaterial({ color: 0x00ff00 }), // Left
-      new THREE.MeshBasicMaterial({ color: 0x0000ff }), // Top
-      new THREE.MeshBasicMaterial({ color: 0xffff00 }), // Bottom
-      new THREE.MeshBasicMaterial({ color: 0xff00ff }), // Front
-      new THREE.MeshBasicMaterial({ color: 0x00ffff })  // Back
+      new THREE.MeshBasicMaterial({ color: 0xff8800 }), // Left
+      new THREE.MeshBasicMaterial({ color: 0xffffff }), // Top
+      new THREE.MeshBasicMaterial({ color: 0xffcf00 }), // Bottom
+      new THREE.MeshBasicMaterial({ color: 0x00b700 }), // Front
+      new THREE.MeshBasicMaterial({ color: 0x0000db })  // Back
     ];
 
     const cubeSize = 1;
-    const separation = 0.1;
+    const separation = 0.01;
     const totalCubes = 3;
 
     for (let x = 0; x < totalCubes; x++) {
