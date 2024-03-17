@@ -1,15 +1,15 @@
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import {useStore} from '../store/cubeState.js';
 
 const RubiksCube = () => {
+  const cubeState = useStore((state) => state.cubeState);
   const containerRef = useRef(null);
   const renderer = useRef(null);
   const camera = useRef(null);
   const scene = useRef(null);
   const controls = useRef(null);
-
-  
 
   useEffect(() => {
     // Scene
@@ -28,15 +28,10 @@ const RubiksCube = () => {
     controls.current = new OrbitControls(camera.current, renderer.current.domElement);
 
     // Rubik's Cube
-    const cubeMaterials = [
-      new THREE.MeshBasicMaterial({ color: 0xdf2935 }), // Right
-      new THREE.MeshBasicMaterial({ color: 0xff8800 }), // Left
-      new THREE.MeshBasicMaterial({ color: 0xffffff }), // Top
-      new THREE.MeshBasicMaterial({ color: 0xffcf00 }), // Bottom
-      new THREE.MeshBasicMaterial({ color: 0x00b700 }), // Front
-      new THREE.MeshBasicMaterial({ color: 0x00b4d8 })  // Back
-    ];
-
+    const cubeMaterials = cubeState.map(colorCube => {
+      const hexColor = parseInt(colorCube, 16);
+      return new THREE.MeshBasicMaterial({ color: hexColor});
+    });
     const cubeSize = 1;
     const separation = 0.01;
     const totalCubes = 3;
@@ -75,7 +70,7 @@ const RubiksCube = () => {
       renderer.current.dispose();
       controls.current.dispose();
     };
-  }, []);
+  }, [cubeState]);
 
   return <div ref={containerRef} />;
 };
