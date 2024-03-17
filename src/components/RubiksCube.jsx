@@ -27,12 +27,12 @@ const RubiksCube = () => {
 
     // Rubik's Cube
     const cubeMaterials = [
-      new THREE.MeshBasicMaterial({ color: 0xff0000 }), // Right
+      new THREE.MeshBasicMaterial({ color: 0xdf2935 }), // Right
       new THREE.MeshBasicMaterial({ color: 0xff8800 }), // Left
       new THREE.MeshBasicMaterial({ color: 0xffffff }), // Top
       new THREE.MeshBasicMaterial({ color: 0xffcf00 }), // Bottom
       new THREE.MeshBasicMaterial({ color: 0x00b700 }), // Front
-      new THREE.MeshBasicMaterial({ color: 0x0000db })  // Back
+      new THREE.MeshBasicMaterial({ color: 0x00b4d8 })  // Back
     ];
 
     const cubeSize = 1;
