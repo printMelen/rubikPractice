@@ -1,12 +1,12 @@
 import { create } from 'zustand'
 
 const newCubeState = [
-    Array(9).fill("0xffffff"), //Blanco
-    Array(9).fill("0xff8800"), //Naranja
-    Array(9).fill("0x00b700"), //Verde
     Array(9).fill("0xdf2935"), //Rojo
-    Array(9).fill("0x00b4d8"), //Azul
+    Array(9).fill("0xff8800"), //Naranja
+    Array(9).fill("0xffffff"), //Blanco
     Array(9).fill("0xffcf00"), //Amarillo
+    Array(9).fill("0x00b700"), //Verde
+    Array(9).fill("0x00b4d8"), //Azul
 ];
 export const useStore = create((set) => ({
     cubeState: newCubeState,
