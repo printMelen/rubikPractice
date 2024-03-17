@@ -9,6 +9,8 @@ const RubiksCube = () => {
   const scene = useRef(null);
   const controls = useRef(null);
 
+  
+
   useEffect(() => {
     // Scene
     scene.current = new THREE.Scene();
